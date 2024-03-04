@@ -15,7 +15,7 @@
     <ContentPage Title="Alarm">
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
             <TimePicker x:Name="Alarm" Format="HH:mm"/>
-            <Button Text="Ustaw alarm" WidthRequest="300" BackgroundColor="White" CornerRadius="25"/>
+            <Button Text="Ustaw alarm" WidthRequest="300" BackgroundColor="White" CornerRadius="25" Clicked="SetAlarm"/>
         </StackLayout>
     </ContentPage>
     <ContentPage Title="Minutnik">
