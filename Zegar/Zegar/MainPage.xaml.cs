@@ -13,6 +13,18 @@ namespace Zegar
         public MainPage()
         {
             InitializeComponent();
+            SetCurrentTime();
+        }
+        void SetCurrentTime()
+        {
+            Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+            {
+                TimeDate.Text = DateTime.Now.ToString("HH:mm:ss");
+                Date.Text = DateTime.Now.ToString("dd MMMM yyyy");
+                SetCurrentTime();
+                return false;
+            });
+
         }
     }
 }
