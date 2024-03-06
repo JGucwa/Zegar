@@ -11,6 +11,7 @@ namespace Zegar
     public partial class MainPage : TabbedPage
     {
         private TimeSpan CurrentAlarm;
+        private int TimerSeconds = -1;
         public MainPage()
         {
             InitializeComponent();
@@ -31,6 +32,20 @@ namespace Zegar
                 TimeDate.Text = DateTime.Now.ToString("HH:mm:ss");
                 Date.Text = DateTime.Now.ToString("dd MMMM yyyy");
                 SetCurrentTime();
+
+                if(TimerSeconds != -1)
+                {
+                    TimerSeconds--;
+                    TimerTime.Text = new DateTime(2024, 1, 1).AddSeconds(TimerSeconds).ToString("mm:ss");
+                }
+                if(TimerSeconds == 0)
+                {
+                    TimerSeconds = -1;
+
+                    TimerTime.Text = new DateTime(2024, 1, 1).AddSeconds(0).ToString("mm:ss");
+
+                    DisplayAlert("Minutnik", "Czas Minął", "OK");
+                }
                 return false;
             });
         }
@@ -38,6 +53,11 @@ namespace Zegar
         {
             CurrentAlarm = Alarm.Time;
             Alarm.Time = new TimeSpan();
+        }
+        void SetTimer(object sender, EventArgs e)
+        {
+            TimerSeconds = int.Parse(Timer.Text) * 60;
+            TimerTime.Text = new DateTime(2024,1,1).AddSeconds(TimerSeconds).ToString("mm:ss");
         }
     }
 }

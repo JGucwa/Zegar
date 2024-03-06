@@ -27,7 +27,7 @@
             <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                 <Label x:Name="TimerTime" Text="00:00" FontSize="Medium"/>
             </StackLayout>
-            <Button Text="Start"/>
+            <Button Text="Start" Clicked="SetTimer"/>
         </StackLayout>
     </ContentPage>
 
